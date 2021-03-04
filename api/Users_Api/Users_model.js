@@ -6,6 +6,7 @@ const b = "BattleClass";
 
 module.exports = {
   all,
+  getById,
   add,
   update,
   del,
@@ -13,9 +14,14 @@ module.exports = {
 
 function all() {
   // console.log(db(b).where("id", db(t)));
-  return db(t)
-    .select("username", "Name")
-    .join(b, `${t}.classId`, "=", `${b}.Class_id`);
+  return db(t);
+  // return db(t)
+  //   .select("username", "Name")
+  //   .join(b, `${t}.classId`, "=", `${b}.Class_id`);
+}
+
+function getById(id) {
+  return db(t).where("discordId", id);
 }
 
 function add(ele) {
@@ -27,5 +33,5 @@ function update(id, ele) {
 }
 
 function del(id) {
-  return db(t).where("id", id).del();
+  return db(t).where("discordId", id).del();
 }

@@ -13,11 +13,34 @@ route.get("/", (req, res) => {
     });
 });
 
+route.get("/sayhi/:word", (req, res) => {
+  const word = req.params.word;
+  console.log(word);
+  res.status(200).json({ res: `Hello ${word}` });
+});
+
+route.get("/:id", (req, res) => {
+  Db.getById(req.params.id)
+    .then((cols) => {
+      res.status(200).json(cols);
+    })
+    .catch((err) => {
+      res.status(500).json({ ERROR: "could not get the things" });
+      console.log(err);
+    });
+});
+
 route.post("/add/:id", (req, res) => {
+  console.log(req.body);
   id = req.params.id;
-  body = { id: id, ...req.body };
+  // body = { discordId: id, ...req.body };
+  req.body.discordId = id;
+  body = req.body;
+  console.log("Body: ", body);
   Db.add(body).then((ele) => {
-    res.status(200).json({ Added: res.body });
+    Db.getById(id).then((user) => {
+      res.status(200).json({ "added user": user });
+    });
   });
 });
 

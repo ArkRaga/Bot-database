@@ -32,7 +32,7 @@ route.put("/put/:id", (req, res) => {
 route.delete("/del/:id", (req, res) => {
   id = req.params.id;
   Db.del(id).then((ele) => {
-    res.status(200).json({ "Deleted id": id });
+    res.status(201).json({ "Deleted id": id });
   });
 });
 

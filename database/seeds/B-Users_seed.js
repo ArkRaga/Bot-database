@@ -8,7 +8,12 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex("Users").insert([
         { User_id: 1, username: "jimmyJohn", discordId: 7245 },
-        { User_id: 2, username: "JerseyMikes", discordId: 5512, classId: 3 },
+        {
+          User_id: 2,
+          username: "JerseyMikes",
+          discordId: 5512,
+          class: "Werewolf",
+        },
       ]);
     });
 };
