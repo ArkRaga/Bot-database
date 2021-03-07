@@ -2,7 +2,7 @@ exports.up = function (knex) {
   return knex.schema.createTable("Users", (user) => {
     user.increments("User_id");
     user.text("username");
-    user.text("discordId");
+    user.text("discordId").unique();
     user.integer("points").defaultTo(0);
     user.integer("battleLevel").defaultTo(0);
     user.text("class").defaultTo("StartClass");
