@@ -14,6 +14,12 @@ exports.seed = function (knex) {
           discordId: 5512,
           class: "Werewolf",
         },
+        {
+          User_id: 3,
+          username: "Arkraga",
+          discordId: "595632750342569985",
+          class: "Werewolf",
+        },
       ]);
     });
 };

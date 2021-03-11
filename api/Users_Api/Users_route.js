@@ -2,7 +2,7 @@ const exspress = require("express");
 const route = exspress.Router();
 const Db = require("./Users_model");
 
-route.get("/", (req, res) => {
+route.get("/all", (req, res) => {
   Db.all()
     .then((cols) => {
       res.status(200).json(cols);

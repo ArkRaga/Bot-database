@@ -1,6 +1,6 @@
 const exspress = require("express");
 const route = exspress.Router();
-const Db = require("./inventory_model");
+const Db = require("./Items_model");
 
 route.get("/all", (req, res) => {
   Db.all()
@@ -13,21 +13,8 @@ route.get("/all", (req, res) => {
     });
 });
 
-route.get("/user/:id", (req, res) => {
-  const id = req.params.id;
-
-  Db.usersAll(id)
-    .then((cols) => {
-      res.status(200).json(cols);
-    })
-    .catch((err) => {
-      res.status(500).json({ ERROR: "could not get the things" });
-      console.log(err);
-    });
-});
-
-route.get("/item", (req, res) => {
-  Db.item(req.body)
+route.get("/:id", (req, res) => {
+  Db.getById(req.params.id)
     .then((cols) => {
       res.status(200).json(cols);
     })
@@ -38,24 +25,31 @@ route.get("/item", (req, res) => {
 });
 
 route.post("/add/:id", (req, res) => {
+  console.log(req.body);
   id = req.params.id;
-  body = { player_id: id, ...req.body };
+  // body = { discordId: id, ...req.body };
+  req.body.discordId = id;
+  body = req.body;
+  console.log("Body: ", body);
   Db.add(body).then((ele) => {
-    res.status(200).json({ Added: body });
+    Db.getById(id).then((user) => {
+      res.status(200).json({ "added user": user });
+    });
   });
 });
 
-route.put("/item", (req, res) => {
-  console.log("L-49-inv_route:", req.body);
-  Db.update(req.body).then((ele) => {
-    res.status(200).json({ bod: req.body });
+route.put("/put/:id", (req, res) => {
+  id = req.params.id;
+  body = { id: id, ...req.body };
+  Db.update(id, body).then((ele) => {
+    res.status(200).json({ bod: body });
   });
 });
 
 route.delete("/del/:id", (req, res) => {
   id = req.params.id;
   Db.del(id).then((ele) => {
-    res.status(201).json({ "Deleted id": id });
+    res.status(200).json({ "Deleted id": id });
   });
 });
 
