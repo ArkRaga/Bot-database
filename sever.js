@@ -13,15 +13,23 @@ const AnimeMessage_route = require("./api/AnimeMessage_api/AnimeMessage_route");
 const AnimeRatings_route = require("./api/AnimeRatings_api/AnimeRatings_route");
 const Inventory_route = require("./api/Inventories_api/inventory_route");
 const Item_route = require("./api/Items_api/Items_route");
+const Monster_route = require("./api/Monster_api/monster_route");
+const Skills_route = require("./api/Skills_api/skills_route");
+const MonsterDrops_route = require("./api/Monster_drops_api/monsterDrops_route");
+const Quests_route = require("./api/Quests_api/quests_route");
 
-server.use("/api", Users_route);
+server.use("/api/users", Users_route);
 server.use("/api/class", BC_route);
 server.use("/api/combats", Combat_route);
 server.use("/api/anime", Anime_route);
 server.use("/api/animeMessage", AnimeMessage_route);
 server.use("/api/animeRatings", AnimeRatings_route);
 server.use("/api/inv", Inventory_route);
-server.use("/api/item", Item_route);
+server.use("/api/items", Item_route);
+server.use("/api/monsters", Monster_route);
+server.use("/api/skills", Skills_route);
+server.use("/api/drops", MonsterDrops_route);
+server.use("/api/quests", Quests_route);
 
 server.get("/", (req, res) => {
   res.send({ Jarvis: "Ready to work sir." });

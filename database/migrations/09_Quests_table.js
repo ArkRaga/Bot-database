@@ -1,26 +1,28 @@
 exports.up = function (knex) {
-  return knex.schema.createTable("Mats", (mats) => {
-    mats.increments("id");
-    mats
-      .integer("item_id")
-      .unsigned()
+  return knex.schema.createTable("Quests", (ele) => {
+    ele.increments("quest_id");
+    ele.string("name");
+    ele.string("desc");
+    ele.string("type");
+    ele
+      .integer("required_item_id")
       .notNullable()
+      .unsigned()
       .references("item_id")
       .inTable("Items")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
-    mats
-      .integer("mat_id")
-      .unsigned()
+    ele
+      .integer("reward_item_id")
       .notNullable()
+      .unsigned()
       .references("item_id")
       .inTable("Items")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
-    mats.integer("quantity").defaultTo(1);
   });
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTableIfExists("Mats");
+  return knex.schema.dropTableIfExists("Quests");
 };

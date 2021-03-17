@@ -5,8 +5,7 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex("Mats").insert([
-        { item_id: 16, mat_id: 1, quantity: 3 },
-        { item_id: 16, mat_id: 6, quantity: 5 },
+        { crafted_item_id: 10, mat_id: 1, quantity: 3 },
       ]);
     });
 };
