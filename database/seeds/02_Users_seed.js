@@ -7,11 +7,11 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex("Users").insert([
-        { User_id: 1, username: "jimmyJohn", discordId: 7245 },
+        { User_id: 1, username: "jimmyJohn", discordId: "7245" },
         {
           User_id: 2,
           username: "JerseyMikes",
-          discordId: 5512,
+          discordId: "5512",
           class: "Werewolf",
         },
         {

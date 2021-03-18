@@ -1,9 +1,8 @@
 
 Todo:
- ☐ add user Quest Logs to database
- ☐ add user Quest api
  ☐ add dungeons to database
  ☐ add dungeons api
  ☐ add rooms to database
  ☐ add talents to data base
  ☐ add talents api
+ ☐ add class to talent table

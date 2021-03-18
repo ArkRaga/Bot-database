@@ -3,9 +3,9 @@ exports.up = function (knex) {
     chrsk.increments("charskill_id");
 
     chrsk
-      .integer("user_id")
+      .text("user_discord_id")
       .unsigned()
-      .references("User_id")
+      .references("discordId")
       .inTable("Users")
       .onDelete("CASCADE")
       .onUpdate("CASCADE")

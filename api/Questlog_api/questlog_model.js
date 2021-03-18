@@ -1,7 +1,7 @@
 const knex = require("knex");
 const knexConfig = require("../../knexfile");
 const db = knex(knexConfig.development);
-const n = "Monsterdrops";
+const n = "Questlogs";
 
 module.exports = {
   all,
@@ -12,11 +12,11 @@ module.exports = {
 };
 
 function all() {
-  return db(n).join("Items as i1", `${n}.item_id`, "=", "i1.item_id");
+  return db(n);
 }
 
 function usersAll(id) {
-  return db(n).where("monsterdropId", id);
+  return db(n).where("questlog_id", id);
 }
 
 function add(ele) {
@@ -24,9 +24,9 @@ function add(ele) {
 }
 
 function update(ele) {
-  return db(n).where("monsterdropId", ele.monsterdropid).update(ele);
+  return db(n).where("questlog_id", ele.questlog_id).update(ele);
 }
 
 function del(id) {
-  return db(n).where("monsterdropId", id).del();
+  return db(n).where("questlog_id", id).del();
 }
