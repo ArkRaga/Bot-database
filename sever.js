@@ -19,6 +19,7 @@ const MonsterDrops_route = require("./api/Monster_drops_api/monsterDrops_route")
 const Quests_route = require("./api/Quests_api/quests_route");
 const Charskill_route = require("./api/Charskills_api/charskills_route");
 const Questlogs_route = require("./api/Questlog_api/questlog_route");
+const Mats_route = require("./api/Mats_api/mats_route");
 
 server.use("/api/users", Users_route);
 server.use("/api/class", BC_route);
@@ -34,6 +35,7 @@ server.use("/api/drops", MonsterDrops_route);
 server.use("/api/quests", Quests_route);
 server.use("/api/charskills", Charskill_route);
 server.use("/api/questlogs", Questlogs_route);
+server.use("/api/mats", Mats_route);
 
 server.get("/", (req, res) => {
   res.send({ Jarvis: "Ready to work sir." });
