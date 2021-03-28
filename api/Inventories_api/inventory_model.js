@@ -35,6 +35,9 @@ function update(ele) {
     .update(ele);
 }
 
-function del(id) {
-  return db(n).where("player_id", id).del();
+function del(ele) {
+  return db(n)
+    .where("player_id", ele.player_id)
+    .where("item_id", ele.item_id)
+    .del();
 }

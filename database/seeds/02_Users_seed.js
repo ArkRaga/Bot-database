@@ -7,15 +7,13 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex("Users").insert([
-        { User_id: 1, username: "jimmyJohn", discordId: "7245" },
+        { username: "jimmyJohn", discordId: "7245" },
         {
-          User_id: 2,
           username: "JerseyMikes",
           discordId: "5512",
           class: "Werewolf",
         },
         {
-          User_id: 3,
           username: "Arkraga",
           discordId: "595632750342569985",
           class: "Werewolf",

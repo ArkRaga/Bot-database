@@ -27,7 +27,7 @@ server.use("/api/combats", Combat_route);
 server.use("/api/anime", Anime_route);
 server.use("/api/animeMessage", AnimeMessage_route);
 server.use("/api/animeRatings", AnimeRatings_route);
-server.use("/api/inv", Inventory_route);
+server.use("/api/invs", Inventory_route);
 server.use("/api/items", Item_route);
 server.use("/api/monsters", Monster_route);
 server.use("/api/skills", Skills_route);

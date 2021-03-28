@@ -4,6 +4,7 @@ exports.up = function (knex) {
     ele.string("name");
     ele.string("desc");
     ele.string("type");
+    ele.integer("required_quantity").defaultTo(-1);
     ele
       .integer("required_item_id")
       .notNullable()

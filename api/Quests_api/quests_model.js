@@ -12,7 +12,14 @@ module.exports = {
 };
 
 function all() {
-  return db(n);
+  return db(n)
+    .join("Items as ia", `${n}.required_item_id`, "=", "ia.item_id")
+    .join("Items as ib", `${n}.reward_item_id`, "=", "ib.item_id")
+    .select(
+      `${n}.*`,
+      "ia.name as required_item_name",
+      "ib.name as reward_item_name"
+    );
 }
 
 function usersAll(id) {

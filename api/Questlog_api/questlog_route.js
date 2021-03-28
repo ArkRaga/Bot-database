@@ -24,17 +24,12 @@ route.get("/:id", (req, res) => {
     });
 });
 
-route.post("/add/:id", (req, res) => {
+route.post("/add", (req, res) => {
   console.log(req.body);
-  id = req.params.id;
-  // body = { discordId: id, ...req.body };
-  req.body.discordId = id;
   body = req.body;
   console.log("Body: ", body);
   Db.add(body).then((ele) => {
-    Db.getById(id).then((user) => {
-      res.status(200).json({ "added user": user });
-    });
+    res.status(200).json({ "added quest": body.quests_id });
   });
 });
 
@@ -46,10 +41,10 @@ route.put("/put/:id", (req, res) => {
   });
 });
 
-route.delete("/del/:id", (req, res) => {
-  id = req.params.id;
-  Db.del(id).then((ele) => {
-    res.status(200).json({ "Deleted id": id });
+route.delete("/del", (req, res) => {
+  console.log("questlog-delete: ", req.body);
+  Db.del(req.body).then((ele) => {
+    res.status(200).json({ Deleted: req.body.quests_id });
   });
 });
 

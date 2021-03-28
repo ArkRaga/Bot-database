@@ -5,7 +5,7 @@ exports.seed = function (knex) {
     .then(function () {
       // Inserts seed entries
       return knex("Questlogs").insert([
-        { questlog_id: 1, user_discord_id: "7245", quests_id: 1 },
+        { user_discord_id: "7245", quests_id: 1 },
       ]);
     });
 };

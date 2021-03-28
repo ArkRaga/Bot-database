@@ -52,10 +52,10 @@ route.put("/item", (req, res) => {
   });
 });
 
-route.delete("/del/:id", (req, res) => {
-  id = req.params.id;
-  Db.del(id).then((ele) => {
-    res.status(201).json({ "Deleted id": id });
+route.delete("/del", (req, res) => {
+  console.log(ele);
+  Db.del(reg.body).then((ele) => {
+    res.status(201).json({ "Deleted item": reg.body.item_id });
   });
 });
 
